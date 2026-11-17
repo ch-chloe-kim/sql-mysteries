@@ -1,3 +1,5 @@
+> **Fork note (ch-chloe-kim):** This is a fork of [NUKnightLab/sql-mysteries](https://github.com/NUKnightLab/sql-mysteries) (MIT), modified as a coursework project for *Introduction to Open Source Software* (Hanshin University, 2026). See [What I changed](#what-i-changed-in-this-fork) below.
+
 # SQL Murder Mystery
 
 ![Illustration of a detective looking at evidence](174092-clue-illustration.png)
@@ -49,3 +51,14 @@ Original text and other content is released under [Creative Commons CC BY-SA 4.0
 SQL query custom web components used here were adapted from code created and released to the public domain by Zi Chong Kao, creator of [Select Star SQL](https://selectstarsql.com/).
 
 [Detective image by rambleron](https://www.vecteezy.com/vector-art/174092-clue-illustration) used under Vecteezy's free license.
+
+## What I changed in this fork
+
+| Area | File | Change |
+|---|---|---|
+| UI text | `scripts/main.js` | Localized the exercise **Run** button and the auto-grading verdict to Korean (`Correct`/`Incorrect` → `정답입니다!`/`다시 시도해 보세요`), with green/red bold styling |
+| Database | `sql/check_solution.sql`, `sql-murder-mystery.db` | Extracted the `check_solution` trigger (which validates the suspect name via `hex()` comparison) into a plain SQL file so changes are diff-able, then translated its three result messages to Korean and re-applied it to the SQLite DB |
+
+**How the game works (my notes):** The page downloads the SQLite file and runs it fully in the browser through [sql.js](https://github.com/sql-js/sql.js) (SQLite compiled to WebAssembly) inside a Web Worker, so no backend is needed. Exercise answers are checked in JavaScript by comparing sorted result sets, while the final "who did it" check lives inside the database as an `AFTER INSERT` trigger.
+
+Original code © 2018 NUKnightLab, MIT License. Original text and content CC BY-SA 4.0.
