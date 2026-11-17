@@ -1,4 +1,6 @@
 > **Fork note (ch-chloe-kim):** This is a fork of [NUKnightLab/sql-mysteries](https://github.com/NUKnightLab/sql-mysteries) (MIT), modified as a coursework project for *Introduction to Open Source Software* (Hanshin University, 2026). See [What I changed](#what-i-changed-in-this-fork) below.
+>
+> **Live demo:** https://ch-chloe-kim.github.io/sql-mysteries/ (Korean-localized grading & solution messages)
 
 # SQL Murder Mystery
 
