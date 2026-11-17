@@ -251,7 +251,7 @@ class sqlExercise extends HTMLElement {
     editor.setSize('100%', 'auto');
     editor.refresh();
 
-    var runButton = `<input class="sql-exercise-submit" type="submit" value="Run &#x21e9;" disabled>`;
+    var runButton = `<input class="sql-exercise-submit" type="submit" value="실행 &#x21e9;" disabled>`;
     inputArea.insertAdjacentHTML("beforeend", runButton);
 
     form['onsubmit'] = (e) => {
@@ -272,9 +272,12 @@ class sqlExercise extends HTMLElement {
                 submission_u.sort();
                 solution_u.sort();
             }
-            var verdict = arraysEqual(submission_u, solution_u) ? "Correct" : "Incorrect";
+            var isCorrect = arraysEqual(submission_u, solution_u);
+            var verdict = isCorrect ? "정답입니다!" : "다시 시도해 보세요";
             // http://adripofjavascript.com/blog/drips/object-equality-in-javascript.html
             verdict_div.innerText = verdict;
+            verdict_div.style.color = isCorrect ? "#1a7f37" : "#cf222e";  // 정답: 초록, 오답: 빨강
+            verdict_div.style.fontWeight = "bold";
           });
         }
         if (submission_data.length > 0) {
